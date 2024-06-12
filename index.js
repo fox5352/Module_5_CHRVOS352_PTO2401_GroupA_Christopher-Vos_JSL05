@@ -11,24 +11,56 @@ const songs = [
     { title: "Come and Get Your Love", artist: "Redbone", genre: "Rock" },
     { title: "I'm Not in Love", artist: "10cc", genre: "Pop" },
     { title: "Fooled Around and Fell in Love", artist: "Elvin Bishop", genre: "Rock" },
-    // Feel free to add even more songs
+    { title: "abracadabra", artist: "steve miller band", genre:"Rock" },
+    { title: "Youth8500", artist: "DROIDS OSAKA", genre: "Rock"},
+    { title: "White Lights", artist: "Me My Head", genre: "Rock"},
+    { title: "Sway", artist: "Anita Kelsey", genre: "Pop" },
+    { title: "The Night Has A Thousand Eyes", artist: "Anita Kelsey", genre:"Pop"}
 ];
-
 
 // Object containing each Guardian's preferred genre
 const guardians = {
     "Star-Lord": "Rock",
     "Gamora": "Pop",
-    // Add preferences for Drax, Rocket, and Groot
+    "Drax": "Rock",
+    "Rocket": "Rock",
+    "Groot": "Pop"
 };
 
 // Function to generate playlist based on preferred genre
 function generatePlaylist(guardians, songs) {
-    // Use the map() function to create playlists for each Guardian
-    // Your code here
+    const playlists = [];
+
+    for (const key in guardians) {
+        const genre = guardians[key];
+        // filters out non matching genres
+        const playlist = songs.filter(song => song.genre === genre);
+        
+        playlists.push({guardian: key, playlist: playlist,});
+    }
+
+    // gets playlistTag 
+    const playlistTag = document.getElementById("playlists");
+
+    // maps playlists into divs for each guardian with there prefered genres
+    playlists.map(playlist =>{
+
+        const playlistDiv = document.createElement("div");
+        playlistDiv.classList.add("playlist");
+        
+        playlistDiv.innerHTML = `
+            <h2>${playlist.guardian}</h2>
+
+            ${playlist.playlist.map(song => 
+                `<p class="song">
+                    <span class="song-title">${song.title}</span> - ${song.artist}
+                </p>`
+            ).join("")}
+        `;
+        
+        playlistTag.appendChild(playlistDiv);
+    })
 }
 
 // Call generatePlaylist and display the playlists for each Guardian
 generatePlaylist(guardians, songs);
-
-
