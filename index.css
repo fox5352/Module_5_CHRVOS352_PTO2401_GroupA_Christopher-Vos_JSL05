@@ -15,6 +15,11 @@ h1 {
 }
 
 .playlist {
+    display: flex;
+    flex-wrap: wrap;
+
+    /* max-width: 360px; */
+
     margin: 20px;
     padding: 20px; /* Increased padding */
     background-color: #6A5ACD; /* Purple background for playlists */
