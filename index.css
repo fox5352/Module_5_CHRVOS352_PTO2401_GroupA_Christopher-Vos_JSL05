@@ -14,12 +14,8 @@ h1 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for headings */
 }
 
+
 .playlist {
-    display: flex;
-    flex-wrap: wrap;
-
-    /* max-width: 360px; */
-
     margin: 20px;
     padding: 20px; /* Increased padding */
     background-color: #6A5ACD; /* Purple background for playlists */
